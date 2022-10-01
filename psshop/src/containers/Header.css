@@ -1,0 +1,22 @@
+.Header {
+    background-color: #ccc;
+    width: 100%;
+    display: flex;
+}
+
+.logo {
+    font-family: Georgia;
+    font-size: 2.0em;
+    text-decoration: none;
+}
+
+.logoxs {
+    font-size: 1.2em;
+}
+
+.logo span {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 5px;
+    color: white;
+}

@@ -1,0 +1,13 @@
+.SearchInput {
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 0%;
+    visibility: hidden;
+}
+
+.SearchInput:focus {
+    outline: 0;
+}

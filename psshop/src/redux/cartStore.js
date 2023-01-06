@@ -8,9 +8,8 @@ export const cartReducer = createSlice({
             console.log(action.payload);
             
             let itemExists = false;
-            const getItem = state.map((item, i) => {
-                console.log(item);
-                if (item.id === action.payload.id) {
+            state.map((item, i) => {
+                if (item.p_id === action.payload.p_id) {
                     itemExists = true;
                     let sum = item.q + action.payload.q;
                     console.log(sum);
@@ -27,6 +26,7 @@ export const cartReducer = createSlice({
         }
     }
 });
+
 
 export const { addItem, remove } = cartReducer.actions;
 export default cartReducer.reducer;

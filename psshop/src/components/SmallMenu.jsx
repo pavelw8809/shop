@@ -9,7 +9,9 @@ import { NavLink } from 'react-router-dom';
 
 const SmallMenu = (props) => {
 
-    let menuitems = props.cat.map((item, i) => {
+    let menuitems;
+
+    menuitems = props.cat.map((item, i) => {
         return(
             <Button
                 key={item}

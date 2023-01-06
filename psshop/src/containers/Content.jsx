@@ -2,12 +2,18 @@ import { useEffect, useState } from 'react';
 import { React } from 'react';
 import Container from '@mui/material/Container';
 
-import ItemCard from '../components/Card';
+import ItemCard from '../components/MultiCard';
+import SingleItemCard from '../components/Card';
+import FilterPannel from '../components/FilterPannel';
 
 import './Content.css';
+import { requirePropFactory } from '@mui/material';
 
 
 const Content = (props) => {
+
+
+
 
     let itemlist = ({
         name: "",
@@ -19,6 +25,7 @@ const Content = (props) => {
     //let optionArr = [];
     let lastValue = "";
 
+/*
     props.artlist.map((r, id) => {
             if (lastValue != r.p_name_eng) {
                 lastValue = r.p_name_eng;
@@ -49,19 +56,80 @@ const Content = (props) => {
         //}})
     });
     newObj.push(itemlist);
-    
-    let cardlist = newObj.map((r, id) => {
-        //console.log(r);
-        return(
-            <ItemCard key={id}
-                data={r}
-            />
-        )
-    })
+ */ 
+
+    let filterpannel, cardlist;
+
+    //console.log(Object.keys(props.artlist.length));
+    if (props.artlist) {
+        //console.log(props.artlist);
+        /*
+        let artData = [];
+        
+        console.log(artData);
+
+        
+        artData = Object.entries(props.artlist.reduce((itemlist, item) => {
+            //console.log(item);
+            let key = item.p_name_eng;
+            console.log(key);
+            
+            if (!itemlist[key]) {
+                itemlist[key] = [];
+                itemlist[key].push(item);
+            } else {
+                itemlist[key].push(item);
+            }
+            
+            
+            
+            const artname = item.p_name_eng;
+            itemlist[artname] = itemlist[artname] ? [...itemlist[artname], item] : [item];
+            
+            //console.log(itemlist);
+            artData.push(itemlist);
+            return itemlist;
+        }))
+
+        console.log(artData);
+        */
+        /*
+        cardlist = Object.keys(props.artlist).map(r => {
+            return(
+                <ItemCard
+                    groupdata={props.artlist[r]}
+                    artdata={r}
+                />
+            )
+        })
+        */
+        cardlist = props.artlist.map((r, id) => {
+            return(
+                <SingleItemCard key={r.p_id}
+                    artdata={r}
+                    //name={r.p_name_eng}
+                    //code={r.p_code}
+                    //id={r.p_id}
+                    //price={r.p_price}
+                    //shortdesc={r.p_shortdescription}
+                />
+            )
+        })
+                       
+
+        
+    } //else {
+    //    console.log("TEST");
+    //    props.loading(true);
+   //     cardlist = <p>Loading...</p>
+    //}
     
     return(
-        <Container sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-            {cardlist}
+        <Container disableGutters sx={{display: "flex", justifyContent: "center"}}>
+
+            <Container sx={{display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: 25}}>
+                {cardlist}
+            </Container>
         </Container>
         
     )

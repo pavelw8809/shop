@@ -16,6 +16,7 @@ export const cartReducer = createSlice({
                     return state[i].q = sum;
                 }
             })
+            console.log(itemExists);
             if (!itemExists) {
                 return [...state, action.payload];
             }            

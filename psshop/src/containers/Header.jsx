@@ -55,7 +55,7 @@ const Header = (props) => {
         }
     }, [artSum, props.sum]);
 */
-    console.log(cart.length);
+    //console.log(cart.length);
 
     const refreshInfo = () => {
         setArtSum(props.sum);

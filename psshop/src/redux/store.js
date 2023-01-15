@@ -1,8 +1,11 @@
-import createTypography from '@mui/material/styles/createTypography';
-import { legacy_createStore as createStore} from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
 import cartReducer from './cartStore';
+
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+import thunk from 'redux-thunk';
+
+import { loadState } from './localStorage';
 
 // 1. Initial state
 
@@ -14,11 +17,32 @@ const defaultState = {
 */
 
 // 2. Actions
+/*
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, cartReducer);
+
+export const store = configureStore({
+    reducer: {
+        cart: persistedReducer
+    },
+    middleware: [thunk]
+})
+
+export const persistor = persistStore(store);
+*/
+
+const persistedState = loadState();
+//const persistedCart = persistedState.cart;
 
 export default configureStore({
     reducer: {
         cart: cartReducer,
-    },
+    }, 
+    preloadedState: persistedState
 })
 
 
